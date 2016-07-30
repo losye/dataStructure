@@ -7,21 +7,29 @@ array： 待查找的二维数组
 target：查找的数字
 
 public class Solution {
+
     public boolean Find(int [][] array,int target) {
         //从左下角开始找
-		int row = array.length-1;
+	int row = array.length-1;
+	
         int i=0;
+        
         while(row >= 0 && i<array[0].length){
-           	if(target > array[row][i]){
+        
+           if(target > array[row][i]){
                 i++;
             }
+            
             else if(target < array[row][i]){
                 row--;
             }
+            
             else{
                 return true;
             }
+            
         }
+        
      	return false;
     }
 }
