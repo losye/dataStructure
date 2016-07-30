@@ -4,17 +4,16 @@
 请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。 
 
 输入描述:
+
 array： 待查找的二维数组
-target：查找的数字
+
+target：查找的数字 
 
 public class Solution {
-
     public boolean Find(int [][] array,int target) {
         //从左下角开始找
 	int row = array.length-1;
-	
         int i=0;
-        
         while(row >= 0 && i<array[0].length){
         
            if(target > array[row][i]){
@@ -28,9 +27,7 @@ public class Solution {
             else{
                 return true;
             }
-            
         }
-        
      	return false;
     }
 }
