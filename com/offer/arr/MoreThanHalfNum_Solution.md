@@ -43,7 +43,7 @@ public class Solution {
 
 public class Solution2 {
 
-public static int getMoreThanHalf(int[] arr, int len){
+	public static int getMoreThanHalf(int[] arr, int len){
 		 int middle = len>>1;
 		 int l = 0;
 		 int r = len-1;
