@@ -6,6 +6,9 @@
 
 如果不存在则输出0。
 
+进阶：想想如何做到  ： 找到出现次数超过N/K的数
+------------------------------------------
+
 public class Solution {
 
     public int MoreThanHalfNum_Solution(int [] array) {
