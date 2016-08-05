@@ -11,9 +11,11 @@ O(N)
 如果找到第K小的数，那么在它之前的数就是最小的K个数。因为：
 在时间复杂度O(N)内，从无序的数组中找到第k小的数。显而易见的是，如果我们找到了第k小的数，那么想求arr中最小的k个数，
 就是再遍历一次数组的工作量而已。
-public class getMinKNum {
 
 //利用快排思想
+
+public class getMinKNum {
+
 public static void getKNum(int[] arr,int start,int end, int k){
 
 		int index = partition(arr, start, end);
@@ -70,7 +72,7 @@ BFPRT算法
 4，假设步骤3中递归调用select(mArr,mArr.length/2)后，返回的数为x。根据这个x划分整
 个arr数组(partition过程)，划分完成的功能为在arr中，比x小的数都在x的左边，大于x的数
 都在x的右边，x在中间。假设划分完成后，x在arr中的位置记为i；
-5，如果i==k，说明x为整个数组中第k⼩小的数，直接返回。
+5，如果i==k，说明x为整个数组中第k小的数，直接返回。
 如果i<k，说明x的处在第k小的数的左边，应该在x的右边寻找第k小的数，所以递归调
 用select函数，在左半区寻找第k小的数。
 如果i>k，说明x的处在第k小的数的右边，应该在x的左边寻找第k小的数，所以递归调
