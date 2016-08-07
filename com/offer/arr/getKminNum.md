@@ -1,5 +1,6 @@
 给定一个无序数组，找到其中最小的K个数
 ====================
+O(N*lgK)
 
 public class getMinKNum {
 	
