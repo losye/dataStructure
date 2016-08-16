@@ -14,6 +14,7 @@ public class LongestLessSumSubArrayLength {
 	public  int maxLength(int[] arr, int k) {
 		int[] h = new int[arr.length + 1];
 		int sum = 0;
+		//这里记录下0这个值第一次出现的位置，即未累加之前的值
 		h[0] = sum;
 		for (int i = 0; i != arr.length; i++) {
 			sum += arr[i];
