@@ -5,7 +5,10 @@ import org.junit.Test;
 /**
  * 给定一个无序矩阵，再给定一个值k，求累加和小于等于k的最大子矩阵大小
  * @author zzy
- *
+ * 此题算法原形为给定一个数组，求相同结果。具体解法可以看LongestLessSumSubArrayLength.java
+ * 
+ * 我们发现其实从数组进阶到矩阵，其思想是什么呢？DP?其实就是在遍历矩阵的时候希望不重复遍历
+ * 那么久可以利用辅助数组来记录必须以第i行开始的子矩阵的结果。
  */
 public class MaxSubMatrixSumLessK {
 	public int maxSubMatrixSumLessThanK(int[][] m, int sum) {
