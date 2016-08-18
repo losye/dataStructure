@@ -47,6 +47,8 @@ public class PrefixCheck {
 	@Test
 	public  void test() {
 		String[] strs = { "abcd", "abc" };
+		String[] str = { "abcd", "bcd" };
 		System.out.println(hasPrefix(strs));
+		System.out.println(hasPrefix(str));
 	}
 }
