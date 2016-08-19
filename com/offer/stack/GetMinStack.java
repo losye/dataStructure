@@ -7,7 +7,7 @@ import org.junit.Test;
  * 设计一个取得最小值的栈
  * @author zzy
  * stack1和stack2本质是一样的
- * stack2可以在一定程度上节省min栈的空间
+ * stack1可以在一定程度上节省min栈的空间
  */
 public class GetMinStack {
 	public class MyStack1 {
