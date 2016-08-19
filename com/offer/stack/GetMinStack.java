@@ -18,7 +18,7 @@ public class GetMinStack {
 			this.stackData = new Stack<Integer>();
 			this.stackMin = new Stack<Integer>();
 		}
-		//min栈只压入小于能与最小值的值
+		//min栈只压入小于等于最小值的值
 		public void push(int newNum) {
 			if (this.stackMin.isEmpty()) {
 				this.stackMin.push(newNum);
