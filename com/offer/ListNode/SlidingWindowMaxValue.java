@@ -10,7 +10,7 @@ public class SlidingWindowMaxValue {
 	 public static void main(String[] args) {
 	        int[] arr = {4, 3, 5, 4, 3, 3, 6, 7};
 	        int w = 3;
-	        System.out.println(getWindowMaxValue(arr, w));
+	        printArrUtils.showArr(getWindowMaxValue(arr, w));
 	    }
 
 	    private static int[] getWindowMaxValue(int[] arr, int w) {
