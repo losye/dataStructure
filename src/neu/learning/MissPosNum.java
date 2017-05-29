@@ -8,7 +8,7 @@ package neu.learning;
 public class MissPosNum {
 	public static void main(String[] args) {
 		//int[] arr = {1,2,3,4};
-		int[] arr = {-1,2,3,4};
+		int[] arr = {2,3,4,6};
 		System.out.println(missNum(arr));
 	}
 	
@@ -17,7 +17,7 @@ public class MissPosNum {
 			return 0;
 		}
 		int l = 0; //目前已收集  1 ~ l 上的数
-		int r = arr.length; // 后续最优的情况下 能收集  1 ~ r 上的数
+		int r = arr.length; // 后续最优的情况下 能收集  1~ r 上的数
 		while(l<r){
 			if(arr[l]==l+1){
 				l++;
