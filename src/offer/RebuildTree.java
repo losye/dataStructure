@@ -20,9 +20,12 @@ public class RebuildTree {
         }
     }
 
-    public static TreeNode rebuild(int[] pre, int[] in){
-        TreeNode root = new TreeNode(pre[0]);
-        
+    public static TreeNode rebuild(int[] pre, int preStart, int preEnd, int[] in, int inStart, int inEnd){
+        TreeNode root = new TreeNode(pre[preStart]);
+
+
+       // root.left = rebuild(pre,);
+        //root.right = rebuild(pre, );
         return root;
     }
 }
