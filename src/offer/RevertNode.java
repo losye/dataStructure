@@ -13,13 +13,15 @@ public class RevertNode {
             this.value = value;
         }
     }
-    //
+    //递归
     public static Node revertRec(Node head){
         if (head == null || head.next == null){
             return head;
         }
-        revertRec(head.next);
-        head.next = head;
+        Node next = head.next;
+        head.next = null;
+        revertRec(next);
+        next.next = head;
         return head;
     }
 
@@ -68,6 +70,6 @@ public class RevertNode {
         printNode(node1);
 
         System.out.println("after revert:   ");
-        printNode(revert(node1));
+        printNode(revertRec(node1));
     }
 }
