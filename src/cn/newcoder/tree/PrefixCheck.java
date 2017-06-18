@@ -24,7 +24,6 @@ public class PrefixCheck {
 			}
 			if (!children.containsKey(chs[i])) {
 				children.put(chs[i], new Tries());
-
 			}
 			return children.get(chs[i]).addAndCheck(chs, i + 1);
 		}
@@ -50,5 +49,13 @@ public class PrefixCheck {
 		String[] str = { "abcd", "bcd", "bce" };
 		System.out.println(hasPrefix(strs));
 		System.out.println(hasPrefix(str));
+	}
+
+	public static void main(String[] args) {
+        PrefixCheck pc = new PrefixCheck();
+		String[] strs = { "abcd", "abc" };
+		String[] str = { "abcd", "bcd", "bce" };
+		System.out.println(pc.hasPrefix(strs));
+		System.out.println(pc.hasPrefix(str));
 	}
 }
