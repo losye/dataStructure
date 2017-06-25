@@ -5,7 +5,7 @@ package offer;
  * 输入一个整数，  输出该数二级制表示中1的个数
  * 输入9 (二级制为1001) 输出2
  */
-public class NumberOf1 {
+public class    NumberOf1 {
     public static int getNumer1(int n){
         int res = 0;
         if(n < 0){
