@@ -13,7 +13,7 @@ public class FindKth2Tail {
             this.value = value;
         }
     }
-
+    //无需辅助栈结构帮助从尾到头 快慢指针之间相差k步即可
     public static Node find(Node head, int k){
         if (head == null){
             return null;
