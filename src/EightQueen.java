@@ -26,22 +26,22 @@ public class EightQueen {
     }
 
     /**
-     *
+     *  判断节点是否合适
      * @param chess 棋盘
      * @param k 行
      * @param j  列
      * @return
      */
-    private  boolean rule(int chess[][],int k,int j){    //判断节点是否合适
+    private  boolean rule(int chess[][],int k,int j){
         for(int i=0;i<8;i++){       //行列冲突
             if(chess[i][j]==1)
                 return false;
         }
-        for(int i=k-1,m=j-1;i>=0&&m>=0;i--,m--){    //左对角线
+        for(int i=k-1,m=j-1;i>=0&&m>=0;i--,m--){    //左对角线冲突
             if(chess[i][m]==1)
                 return false;
         }
-        for(int i=k-1,m=j+1;i>=0&&m<=7;i--,m++){    //右对角线
+        for(int i=k-1,m=j+1;i>=0&&m<=7;i--,m++){    //右对角线冲突
             if(chess[i][m]==1)
                 return false;
         }
