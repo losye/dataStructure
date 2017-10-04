@@ -49,5 +49,11 @@ public class removeDuplicates {
         //int res = new removeDuplicates().removeDuplicates(new int[]{4 ,5, 5, 5 ,5 ,5});
         int res = new removeDuplicates().removeDuplicates(new int[]{1,1,1,1,1,4});
         System.out.println(res);
+        String a = "s";
+        switch (a){
+            case "as":
+                break;
+            case "as1":
+        }
     }
 }
