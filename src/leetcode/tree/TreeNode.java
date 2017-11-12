@@ -6,9 +6,9 @@ package leetcode.tree;
  * @author zhangzhengye
  * @create 2017-11-09 下午11:06
  */
-public class BinaryTree {
+public class TreeNode {
     int val;
-    BinaryTree left;
-    BinaryTree right;
-    BinaryTree(int x) { val = x; }
+    TreeNode left;
+    TreeNode right;
+    TreeNode(int x) { val = x; }
 }

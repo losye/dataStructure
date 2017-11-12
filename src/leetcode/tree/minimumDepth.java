@@ -14,7 +14,7 @@ package leetcode.tree;
  */
 public class minimumDepth {
 
-    public int run(BinaryTree root) {
+    public int run(TreeNode root) {
         if(root == null){
             return 0;
         }
