@@ -4,7 +4,7 @@ package offer;
  * Created by losye
  * O(1)时间删除链表节点
  */
-public class DeleteNode {
+public class  DeleteNode {
     static class Node{
         int value;
         Node next;
