@@ -1,4 +1,4 @@
-package com.nowcoder.other;
+package com.other;
 
 import java.util.LinkedList;
 import java.util.Queue;

@@ -1,4 +1,4 @@
-package cn.newcoder.stack;
+package com.offer.stack;
 
 import java.util.Stack;
 

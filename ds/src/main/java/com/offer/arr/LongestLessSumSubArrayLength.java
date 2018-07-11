@@ -1,4 +1,4 @@
-package cn.newcoder.arr;
+package com.offer.arr;
 
 import org.junit.Test;
 

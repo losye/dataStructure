@@ -1,4 +1,4 @@
-package cn.newcoder.other;
+package com.offer.ListNode;
 
 import java.util.LinkedList;
 /**
