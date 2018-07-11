@@ -2,6 +2,7 @@
 ====================
 O(N*lgK)
 
+```java
 public class getMinKNum {
 	
 	//利用最大堆
@@ -64,7 +65,7 @@ public class getMinKNum {
 		arr[high] = temp;
 	}
 }
-
+```
 
 
 为什么求最小的K个数，要用最大堆呢。

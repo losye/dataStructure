@@ -1,7 +1,5 @@
-package cn.newcoder.arr;
 
-import org.junit.Test;
-
+```java
 /**
  * 求未排序数组中累加和为给定值K的最长子数组长度
  * @author zzy
@@ -41,3 +39,4 @@ public class LongestSumSubArrLength {
 		System.out.println(getMaxLen(arr, 4));
 	}
 }
+```

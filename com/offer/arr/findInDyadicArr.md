@@ -9,6 +9,7 @@ array： 待查找的二维数组
 
 target：查找的数字 
 
+```java
 public class Solution {
 
     public boolean Find(int [][] array,int target) {
@@ -34,6 +35,6 @@ public class Solution {
      	return false;
     }
 }
-
+```
 从代码中可以分析出，利用已知条件。时间复杂度从原来的暴力O(M*N)降到O(Math.max(M,N))
 

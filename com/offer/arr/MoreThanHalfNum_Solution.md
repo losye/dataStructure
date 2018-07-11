@@ -8,7 +8,7 @@
 
 进阶：想想如何做到  ： 找到出现次数超过N/K的数
 ------------------------------------------
-
+```java
 public class Solution {
 
     public int MoreThanHalfNum_Solution(int [] array) {
@@ -41,10 +41,11 @@ public class Solution {
             return temp;
         }else{
         return 0;
+     }
    }
-   
 }
-
+```
+```java
 public class Solution2 {
 
 	public static int getMoreThanHalf(int[] arr, int len){
@@ -82,6 +83,7 @@ public class Solution2 {
 		return i;
 	}
 }
+```
 解题思路：
 ====================
 Solution1:因为一个数是超过一半的，类似于选一个候选数，如果与后面一个数相等则候选值+1，否则-1。

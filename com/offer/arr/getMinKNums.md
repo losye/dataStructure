@@ -14,6 +14,7 @@ O(N)
 
 //利用快排思想
 
+```java
 public class getMinKNum {
 
 public static void getKNum(int[] arr,int start,int end, int k){
@@ -56,6 +57,7 @@ public static void getKNum(int[] arr,int start,int end, int k){
 		return l;
 	}
 }
+```
 
 有些书上说利用BFPRT算法实现O(N)，但是以上快排思想的方法也能做到O(N)，这里简单做下介绍
 
@@ -94,7 +96,7 @@ pivotRange=[a,b]表示arr[a..b]上都是x，并以此区间去命中第k⼩小�
 
 具体过程请参看如下代码中的getMinKNumsByBFPRT方法。
 
-
+```java
 public class BFPRT {
 
 	public int[] getMinKNumsByBFPRT(int[] arr, int k) {
@@ -199,7 +201,7 @@ public class BFPRT {
 		arr[index2] = tmp;
 	}
 }
-
+```
 
 
 	

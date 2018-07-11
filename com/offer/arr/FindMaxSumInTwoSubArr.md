@@ -7,9 +7,7 @@
 
 要求两个子数组无重合部分。
 
-
-package cn.newcoder.arr;
-
+```java
 public class MaxSumBetweenTwoSubArr {
 
 	public int maxSum(int[] arr){
@@ -38,4 +36,5 @@ public class MaxSumBetweenTwoSubArr {
 		return res;
 	}
 }
+```
 

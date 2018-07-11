@@ -9,8 +9,7 @@
 2 之间围成的面积为 2，因为两个柱子的距离为 1，且 2 是最短的柱子，所以面积＝1*2。
 
 求在一个数组中，哪两个柱子围成的面积最大，并返回值。
-
-
+```java
 public class BarProblem {
 
         	public static int maxArea1(int[] arr) {
@@ -44,7 +43,7 @@ public class BarProblem {
          	}  
 
 	}
-
+```
 方法1显然是暴力解，不满足时间复杂度
 
 方法2是这样做的，考虑一个问题，分别得到arr[0],arr[len-1]后，

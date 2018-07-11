@@ -7,6 +7,7 @@
 
 对于进阶题，可以 一次k-1个候选数， 一次删k个。
 
+```java
 public class MoreThanHalf {
 	
 	public static void pirntKMajor(int[] arr, int k){
@@ -75,5 +76,5 @@ public class MoreThanHalf {
 		}
 	}
 }
- 
+```
  
