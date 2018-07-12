@@ -9,8 +9,8 @@ package offer;
 public class FindGreatestSumofSubArr {
 
     //改变了源数组
-    public static int[] solution(int[] arr, int len){
-        if (arr == null || len<1){
+    public static int[] solution(int[] arr, int len) {
+        if (arr == null || len < 1) {
             return null;
         }
         int max = Integer.MIN_VALUE;
@@ -18,8 +18,8 @@ public class FindGreatestSumofSubArr {
         int end = 0;
         int tmp = 0;
         //int res[] = new int[len];
-       // res[0] = arr[0];
-        for (int i=1; i<len; i++) {
+        // res[0] = arr[0];
+        for (int i = 1; i < len; i++) {
             if (arr[i - 1] > 0) {
                 arr[i] = arr[i - 1] + arr[i];
             } else {
@@ -32,11 +32,12 @@ public class FindGreatestSumofSubArr {
                 end = i;
             }
         }
-        return new int[]{start,end};
+        return new int[]{start, end};
     }
+
     //用一个变量记录目前的累加值
-    public static int[] solution2(int[] arr, int len){
-        if (arr == null || len<1){
+    public static int[] solution2(int[] arr, int len) {
+        if (arr == null || len < 1) {
             return null;
         }
         int max = Integer.MIN_VALUE;
@@ -44,14 +45,14 @@ public class FindGreatestSumofSubArr {
         int start = 0;
         int end = 0;
         int tmp = 0;
-        for (int i=1; i<len; i++) {
-            if (cur > 0){
+        for (int i = 1; i < len; i++) {
+            if (cur > 0) {
                 cur = cur + arr[i];
-            }else {
+            } else {
                 cur = arr[i];
                 tmp = i;
             }
-            if (cur > max){
+            if (cur > max) {
                 start = tmp;
                 end = i;
                 max = cur;
@@ -61,9 +62,9 @@ public class FindGreatestSumofSubArr {
     }
 
     public static void main(String[] args) {
-        int[] arr = {1,-2,3,10,-4,7,2,-5};
+        int[] arr = {1, -2, 3, 10, -4, 7, 2, -5};
         int[] res = solution2(arr, arr.length);
-        for (int i=0; i<res.length; i++){
+        for (int i = 0; i < res.length; i++) {
             System.out.println(res[i]);
         }
     }

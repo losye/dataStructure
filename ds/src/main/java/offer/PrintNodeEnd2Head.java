@@ -5,18 +5,10 @@ package offer;
  * 从尾到头打印链表
  */
 public class PrintNodeEnd2Head {
-    public static class Node{
-        private String value;
-        private Node next;
-
-        public Node(String value){
-            this.value = value;
-        }
-    }
     //递归 相当于 用一个辅助栈来完成 当心StackOverFlow
-    public static void printNoe(Node head){
-        if (head != null){
-            if (head.next != null){
+    public static void printNoe(Node head) {
+        if (head != null) {
+            if (head.next != null) {
                 printNoe(head.next);
             }
             System.out.print(head.value + " ");
@@ -32,5 +24,14 @@ public class PrintNodeEnd2Head {
         n2.next = n3;
         n3.next = n4;
         printNoe(n1);
+    }
+
+    public static class Node {
+        private String value;
+        private Node next;
+
+        public Node(String value) {
+            this.value = value;
+        }
     }
 }

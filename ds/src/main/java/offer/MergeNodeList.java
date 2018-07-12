@@ -5,37 +5,29 @@ package offer;
  * 合并两个排序链表
  */
 public class MergeNodeList {
-    static class Node{
-        int value;
-        Node next;
-
-        public Node(int value) {
-            this.value = value;
-        }
-    }
-
-    public static Node merge(Node node1, Node node2){
-        if (node1 == null){
+    public static Node merge(Node node1, Node node2) {
+        if (node1 == null) {
             return node2;
         }
-        if (node2 == null){
+        if (node2 == null) {
             return node1;
         }
         Node res;
-        if (node1.value < node2.value){
+        if (node1.value < node2.value) {
             res = node1;
             res.next = merge(node1.next, node2);
-        }else {
+        } else {
             res = node2;
             res.next = merge(node1, node2.next);
         }
         return res;
     }
-    public static void printNode(Node head){
-        if (head == null){
+
+    public static void printNode(Node head) {
+        if (head == null) {
             return;
         }
-        while (head != null){
+        while (head != null) {
             System.out.print(head.value + " ");
             head = head.next;
         }
@@ -58,5 +50,14 @@ public class MergeNodeList {
         node22.next = node23;
         node23.next = node24;
         printNode(merge(node1, node21));
+    }
+
+    static class Node {
+        int value;
+        Node next;
+
+        public Node(int value) {
+            this.value = value;
+        }
     }
 }

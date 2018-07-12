@@ -5,17 +5,9 @@ package offer;
  * 反转链表
  */
 public class RevertNode {
-    static class Node{
-        int value;
-        Node next;
-
-        public Node(int value) {
-            this.value = value;
-        }
-    }
     //递归
-    public static Node revertRec(Node head){
-        if (head == null || head.next == null){
+    public static Node revertRec(Node head) {
+        if (head == null || head.next == null) {
             return head;
         }
         Node next = head.next;
@@ -25,17 +17,17 @@ public class RevertNode {
         return head;
     }
 
-    public static Node revert(Node head){
-        if (head == null || head.next == null){
+    public static Node revert(Node head) {
+        if (head == null || head.next == null) {
             return head;
         }
         Node pre = null;
         Node revert = null;
         Node temp = head;
         Node next = null;
-        while (temp != null){
+        while (temp != null) {
             next = temp.next;
-            if (next == null){
+            if (next == null) {
                 revert = temp;
             }
             temp.next = pre;
@@ -45,11 +37,11 @@ public class RevertNode {
         return revert;
     }
 
-    public static void printNode(Node head){
-        if (head == null){
+    public static void printNode(Node head) {
+        if (head == null) {
             return;
         }
-        while (head != null){
+        while (head != null) {
             System.out.print(head.value + " ");
             head = head.next;
         }
@@ -71,5 +63,14 @@ public class RevertNode {
 
         System.out.println("after revert:   ");
         printNode(revertRec(node1));
+    }
+
+    static class Node {
+        int value;
+        Node next;
+
+        public Node(int value) {
+            this.value = value;
+        }
     }
 }

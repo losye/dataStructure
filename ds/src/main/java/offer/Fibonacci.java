@@ -35,12 +35,16 @@ public class Fibonacci {
         return result;
     }
 
-    /*如果严格遵循 : F(N) = F(N-1) + F(N-2)
+    /**
+     *  如果严格遵循 : F(N) = F(N-1) + F(N-2)
 
-	  那么 (F(n),F(n-1)) = (F(N-1),F(N-2))*|a b|
-       									   |c d|
+         那么
+        (F(n),F(n-1)) = (F(N-1),F(N-2))*|a b|
+                                        |c d|
+     */
 
-          */
+
+
     public static int solution3(int n){
         return 0;
     }
