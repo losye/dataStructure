@@ -1,6 +1,7 @@
 package cn.newcoder.tree;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
 /**
  * 给定一颗完全二叉树的头节点head，求节点个数
  * @author zzy
