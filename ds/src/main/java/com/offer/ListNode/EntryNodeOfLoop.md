@@ -1,6 +1,8 @@
-题目描述
+题目描述 
 ================
+判断链表是否有环
 
+```java
 public class ListNode {
 
     int val;
@@ -33,6 +35,6 @@ public class Solution {
         return node1;
     }
 }
-
-
+```
+## 思路
 一个快指针，一个慢指针问题

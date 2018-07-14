@@ -4,6 +4,7 @@
 
 请问用n个 2*1 的小矩形无重叠地覆盖一个2*n的大矩形，总共有多少种方法？
 
+```java
 public class Solution {
 
     public int RectCover(int target) {
@@ -16,3 +17,5 @@ public class Solution {
         return RectCover(target-1)+RectCover(target-2);
     }
 }
+
+```

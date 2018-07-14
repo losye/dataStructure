@@ -5,6 +5,7 @@
 
 重复的结点不保留，返回链表头指针。 例如，链表1->2->3->3->4->4->5 处理后为 1->2->5
 
+```java
 public class ListNode {
 
     int val;
@@ -38,3 +39,4 @@ public class Solution {
         return temp.next;
     }
 }
+```
