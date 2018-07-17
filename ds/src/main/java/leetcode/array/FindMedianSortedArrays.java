@@ -1,7 +1,5 @@
 package leetcode.array;
 
-import java.util.Arrays;
-
 /**
  * ${DESCRIPTION}
  *
@@ -24,7 +22,7 @@ import java.util.Arrays;
     nums2 = [3, 4]
     The median is (2 + 3)/2 = 2.5
  */
-public class findMedianSortedArrays {
+public class FindMedianSortedArrays {
 
     /**
      * 此方法用了额外的m+n的数组空间，如何才能避免这个空间？
@@ -37,13 +35,11 @@ public class findMedianSortedArrays {
         int len = nums1.length + nums2.length;
         int[] nums3 = new int[len];
         nums3 = merge(nums1, nums2);
-        if (len%2 == 0){
+        if ((len&1) == 0){
             return (nums3[len/2-1]+nums3[len/2])/2.0;
         }
         return nums3[len/2];
     }
-
-
 
     private int[] merge(int[] nums1, int[] nums2){
         int len1 = nums1.length;
@@ -97,8 +93,7 @@ public class findMedianSortedArrays {
     }
 
     public static void main(String[] args) {
-
-        double res = new findMedianSortedArrays().findMedianSortedArrays2(new int[]{1,3,4,7}, new int[]{2,3,5,9});
+        double res = new FindMedianSortedArrays().findMedianSortedArrays(new int[]{1,3,4,7}, new int[]{2,3,5,9});
         System.out.println(res);
     }
 }
