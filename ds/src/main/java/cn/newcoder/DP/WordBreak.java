@@ -1,6 +1,5 @@
 package cn.newcoder.DP;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -32,7 +31,7 @@ public class WordBreak {
         Set<String> set = new HashSet<String >();
         set.add("le");
         set.add("code");
-        set.add("etet");
+        set.add("et");
         System.out.println(wordBreak("leetcode", set));
 
     }
