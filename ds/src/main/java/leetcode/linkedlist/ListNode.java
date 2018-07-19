@@ -7,8 +7,8 @@ package leetcode.linkedlist;
  * @create 2017-10-16 下午9:20
  */
 public class ListNode {
-      int val;
-      ListNode next;
+      public int val;
+      public ListNode next;
       ListNode(int x) { val = x; }
 
 }
