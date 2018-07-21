@@ -1,4 +1,4 @@
-package neu.learning;
+package neu.learning.model;
 
 public class TreeNode {
     int val = 0;

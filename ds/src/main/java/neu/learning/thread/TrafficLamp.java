@@ -1,4 +1,4 @@
-package neu.learning;
+package neu.learning.thread;
 
 public enum TrafficLamp {
 	RED(50){

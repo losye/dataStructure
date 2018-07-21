@@ -1,6 +1,7 @@
 package neu.learning;
+import neu.learning.model.TreeNode;
+
 import java.util.Stack;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 二叉搜索树的第k个结点

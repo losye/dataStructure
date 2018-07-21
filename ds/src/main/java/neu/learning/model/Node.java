@@ -1,4 +1,4 @@
-package neu.learning;
+package neu.learning.model;
 
 import java.util.Stack;
 

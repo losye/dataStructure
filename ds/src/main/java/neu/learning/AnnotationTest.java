@@ -1,9 +1,9 @@
 package neu.learning;
 
+import neu.learning.model.Myannotation;
+
 import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
 import java.sql.Connection;
-import java.util.TreeSet;
 
 public class AnnotationTest {
 

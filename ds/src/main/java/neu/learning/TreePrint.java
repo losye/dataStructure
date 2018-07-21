@@ -1,4 +1,6 @@
 package neu.learning;
+import neu.learning.model.TreeNode;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 
