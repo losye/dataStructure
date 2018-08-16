@@ -69,7 +69,6 @@ public class LinesOfString {
      * widths is an array of length 26.
      * widths[i] will be in the range of [2, 10].
      */
-
     public static int[] solution(int[] widths, String str){
         int lines = 1, width = 0;
         for (char c: str.toCharArray()) {
