@@ -12,7 +12,7 @@ package leetcode.tree;
  * <p>
  * the shortest path from the root node down to the nearest leaf node.
  */
-public class minimumDepth {
+public class MinimumDepth {
 
     public int run(TreeNode root) {
         if (root == null) {
