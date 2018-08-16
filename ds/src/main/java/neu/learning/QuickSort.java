@@ -1,8 +1,8 @@
 package neu.learning;
 
-public class quick_sort {
+public class QuickSort {
 
-    public static void quick(int[] arr, int start, int end) {
+    public static void partition(int[] arr, int start, int end) {
         int i = start, j = end;
         int middle = (start + end) / 2;
         int temp = arr[i];
@@ -17,12 +17,12 @@ public class quick_sort {
             arr[j] = arr[i];
             arr[i] = temp;
         }
-        quick(arr, start, middle - 1);
-        quick(arr, middle + 1, end);
+        partition(arr, start, middle - 1);
+        partition(arr, middle + 1, end);
     }
 
     public static void main(String[] args) {
         int[] arr = {11, 66, 22, 10, 55, 28, 0, 32};
-        quick(arr, 0, arr.length - 1);
+        partition(arr, 0, arr.length - 1);
     }
 }
