@@ -1,5 +1,6 @@
 package leetcode.array.hash;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.HashSet;
@@ -59,7 +60,7 @@ public class MorseCode {
             "...-",".--","-..-","-.--","--.."
     };
 
-    public int uniqueMorseRepresentations(String[] words) {
+    public static int uniqueMorseRepresentations(String[] words) {
         Set<String> unique = new HashSet<>();
         for(String word : words){
             StringBuilder tmp = new StringBuilder();
@@ -73,7 +74,6 @@ public class MorseCode {
 
     @Test
     public void test(){
-        // TODO: 2018/8/17
-
+        Assert.assertEquals(2 ,MorseCode.uniqueMorseRepresentations(new String[]{"gin", "zen", "gig", "msg"}));
     } 
 }
