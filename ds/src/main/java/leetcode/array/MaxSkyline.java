@@ -1,5 +1,8 @@
 package leetcode.array;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 /**
  * @author modong
  * @date 2018/8/18 下午9:57
@@ -55,7 +58,30 @@ public class MaxSkyline {
      * that is, they are a 1 x 1 x grid[i][j]rectangular prism.
      */
 
-    public static int maxIncreaseKeepingSkyline(){
-        return 0;
+    public static int maxIncreaseKeepingSkyline(int[][] grid){
+        int len = grid.length;
+        int[] maxRows = new int[len];
+        int[] maxCols = new int[len];
+
+        for (int i=0; i<grid.length; i++) {
+            for (int j=0; j<grid[i].length; j++) {
+                maxRows[i] = Math.max(grid[i][j], maxRows[i]);
+                maxCols[j] = Math.max(grid[i][j], maxCols[j]);
+            }
+        }
+        int res = 0;
+        for (int i=0; i<grid.length; i++) {
+            for (int j=0; j<grid[i].length; j++) {
+                res += Math.min(maxRows[i], maxCols[j]) - grid[i][j];
+            }
+        }
+
+        return res;
+    }
+
+    @Test
+    public void test(){
+        int[][] grid = new int[][]{{3,0,8,4},{2,4,5,7},{9,2,6,3},{0,3,1,0}};
+        Assert.assertEquals(35, MaxSkyline.maxIncreaseKeepingSkyline(grid));
     }
 }
