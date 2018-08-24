@@ -48,20 +48,51 @@ public class EventualSafeState {
     }
 
     // colors: WHITE 0, GRAY 1, BLACK 2;
-    private static boolean dfs(int node, int[] color, int[][] graph) {
-        if (color[node] > 0)
-            return color[node] == 2;
 
-        color[node] = 1;
+    /**
+     * color{
+     *     WHITE: 节点还未遍历,
+     *     GRAY: 正在遍历邻节点
+     *     BLACK: 已经结束该节点遍历
+     * }
+     * @param node
+     * @param color
+     * @param graph
+     * @return safe
+     */
+    private static boolean dfs(int node, int[] color, int[][] graph) {
+        // 当前节点是否遍历过
+        if (color[node] > DfsState.WHITE.color)
+            return color[node] == DfsState.BLACK.color;
+        // 记录该节点为正在遍历邻节点
+        color[node] = DfsState.GRAY.color;
         for (int nei: graph[node]) {
-            if (color[node] == 2)
+            if (color[nei] == DfsState.BLACK.color)
                 continue;
-            if (color[nei] == 1 || !dfs(nei, color, graph))
+            // 邻接点有环
+            if (color[nei] == DfsState.GRAY.color)
+                return false;
+            // 递归邻节点有环
+            if (!dfs(nei, color, graph))
                 return false;
         }
-        color[node] = 2;
+        // 结束该节点遍历
+        color[node] = DfsState.BLACK.color;
         return true;
     }
+
+    private enum DfsState {
+        WHITE(0),
+        GRAY(1),
+        BLACK(2);
+        private int color;
+
+        DfsState(int color) {
+            this.color = color;
+        }
+
+    }
+
 
     @Test
     public void testDfs(){
