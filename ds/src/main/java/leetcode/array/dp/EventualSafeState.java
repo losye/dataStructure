@@ -4,7 +4,9 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author modong
@@ -35,6 +37,32 @@ import java.util.List;
  */
 public class EventualSafeState {
 
+    public static List<Integer> eventualSafeNodes(int[][] graph) {
+        int N = graph.length;
+        Boolean[] checked = new Boolean[N];
+        List<Integer> list = new ArrayList<>();
+        for(int i = 0; i < N; i++) {
+            if(!check(i, graph, checked, new HashSet<>())) {
+                list.add(i);
+            }
+        }
+        return list;
+    }
+
+    private static boolean check(int i, int[][] graph, Boolean[] checked, Set<Integer> checking) {
+        if(checked[i] != null) return checked[i];
+        checking.add(i);
+        for(int n : graph[i]) {
+            if(checking.contains(n) || check(n, graph, checked, checking)) {
+                checked[i] = true;
+                return true;
+            }
+        }
+        checking.remove(i);
+        checked[i] = false;
+        return false;
+    }
+
     public static List<Integer> eventualSafeNodesDfs(int[][] graph) {
         List<Integer> res = new ArrayList<>();
         int len = graph.length;
@@ -61,9 +89,11 @@ public class EventualSafeState {
      * @return safe
      */
     private static boolean dfs(int node, int[] color, int[][] graph) {
-        // 当前节点是否遍历过
-        if (color[node] > DfsState.WHITE.color)
+        // 当前节点如果遍历过
+        if (color[node] > DfsState.WHITE.color){
+            // gray 表示有环 返回false
             return color[node] == DfsState.BLACK.color;
+        }
         // 记录该节点为正在遍历邻节点
         color[node] = DfsState.GRAY.color;
         for (int nei: graph[node]) {
@@ -98,5 +128,6 @@ public class EventualSafeState {
     public void testDfs(){
         int[][] graph = new int[][]{{1,2},{2,3},{5},{0},{5},{},{}};
         Assert.assertArrayEquals(new Object[]{2,4,5,6}, EventualSafeState.eventualSafeNodesDfs(graph).toArray());
+        Assert.assertArrayEquals(new Object[]{2,4,5,6}, EventualSafeState.eventualSafeNodes(graph).toArray());
     }
 }
