@@ -43,15 +43,17 @@ public class PathsSourceTarget {
         return dfs(graph, 0);
     }
 
-    public static List<List<Integer>> dfs(int[][] graph, int node ){
+    private static List<List<Integer>> dfs(int[][] graph, int node){
         List<List<Integer>> ans = new ArrayList<>();
         int len = graph.length;
+        // 如果通过某条链路到达终点
         if (node == len - 1) {
             List<Integer> path = new ArrayList<>();
-            path.add(len-1);
+            path.add(node);
             ans.add(path);
             return ans;
         }
+        // 遍历所有邻节点
         for (int nei: graph[node]) {
             for (List<Integer> path: dfs(graph, nei)) {
                 path.add(0, node);
