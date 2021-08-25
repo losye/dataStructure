@@ -71,7 +71,6 @@ class Solution {
                 Integer value = window.get(remove);
                 window.put(remove, value-1);
             }
-
             res = Math.max(res, end - start);
         }
 
