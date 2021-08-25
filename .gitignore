@@ -9,6 +9,9 @@
 *.iws
 .idea/
 
+#plugin files
+*.json
+
 # Geany project file
 .geany
 
