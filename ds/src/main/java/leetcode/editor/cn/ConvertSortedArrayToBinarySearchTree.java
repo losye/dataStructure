@@ -63,18 +63,18 @@ public class ConvertSortedArrayToBinarySearchTree {
         public TreeNode sortedArrayToBST(int[] nums) {
             //bst 中序遍历 是从小到大排序的
 
-            return backtrack(0, nums.length, nums);
+            return backtrack(0, nums.length - 1, nums);
         }
 
         private TreeNode backtrack(int left, int right, int[] nums) {
-            if (left >= right) {
+            if (left > right) {
                 return null;
             }
+            //int mid = (left + right) / 2;
+            int mid = left + (right - left) / 2; //防止int溢出
+            TreeNode root = new TreeNode(nums[mid]);
 
-            int mid = (left + right) / 2;
-            TreeNode root = new TreeNode(mid);
-
-            root.left = backtrack(0, mid - 1, nums);
+            root.left = backtrack(left, mid - 1, nums);
             root.right = backtrack(mid + 1, right, nums);
 
             return root;
