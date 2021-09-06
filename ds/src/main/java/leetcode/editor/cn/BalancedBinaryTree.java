@@ -48,41 +48,65 @@ public class BalancedBinaryTree {
         Solution solution = new BalancedBinaryTree().new Solution();
     }
     //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
- */
-class Solution {
-    public boolean isBalanced(TreeNode root) {
-        if (root == null) {
-            return true;
+
+    /**
+     * Definition for a binary tree node.
+     * public class TreeNode {
+     * int val;
+     * TreeNode left;
+     * TreeNode right;
+     * TreeNode() {}
+     * TreeNode(int val) { this.val = val; }
+     * TreeNode(int val, TreeNode left, TreeNode right) {
+     * this.val = val;
+     * this.left = left;
+     * this.right = right;
+     * }
+     * }
+     */
+    class Solution {
+        public boolean isBalanced(TreeNode root) {
+           // return back(root);
+            return recur(root) != -1;
         }
 
-        int left = high(root.left);
-        int right = high(root.right);
+        private boolean back(TreeNode root) {
+            if (root == null) {
+                return true;
+            }
 
-        return Math.abs(left - right) <= 1 && isBalanced(root.left) && isBalanced(root.right);
-    }
+            int left = high(root.left);
+            int right = high(root.right);
 
-    private int high(TreeNode node) {
-        if (node == null) {
-            return 0;
+            return Math.abs(left - right) <= 1 && isBalanced(root.left) && isBalanced(root.right);
         }
 
-        return 1 + Math.max(high(node.left), high(node.right));
+        private int high(TreeNode node) {
+            if (node == null) {
+                return 0;
+            }
+
+            return 1 + Math.max(high(node.left), high(node.right));
+        }
+
+        private int recur(TreeNode root) {
+            if (root == null) {
+                return 0;
+            }
+            int left = recur(root.left);
+            //如果子结构是非平衡,则其父亲也是非平衡
+            if (left == -1) {
+                return -1;
+            }
+            int right = recur(root.right);
+            if (right == -1) {
+                return -1;
+            }
+
+            return Math.abs(right - left) < 2 ? Math.max(left, right) + 1 : -1;
+
+        }
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
