@@ -29,10 +29,7 @@
 package leetcode.editor.cn;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
-import java.util.Stack;
 
 public class BinaryTreeLevelOrderTraversal {
     public static void main(String[] args) {
@@ -55,26 +52,30 @@ public class BinaryTreeLevelOrderTraversal {
  * }
  */
 class Solution {
+    List<List<Integer>> result = new ArrayList<>();
+
+
     public List<List<Integer>> levelOrder(TreeNode root) {
-        List<List<Integer>> result = new ArrayList<>();
-        if (root == null) {
-            return result;
-        }
 
-        Queue<TreeNode> queue = new LinkedList<>();
-
-        queue.add(root);
-
-        while (!queue.isEmpty()) {
-
-            TreeNode poll = queue.poll();
-
-
-        }
-
-
+        order(root, 0);
 
         return result;
+    }
+
+    private void order(TreeNode root, int level) {
+        if (root == null) {
+            return;
+        }
+        if (result.size() <= level) {
+            List<Integer> levelList =  new ArrayList<>();
+            result.add(levelList);
+        }
+        List<Integer> levelList = result.get(level);
+        int val = root.val;
+        levelList.add(val);
+
+        order(root.left, level + 1);
+        order(root.right, level + 1);
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
