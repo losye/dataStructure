@@ -57,6 +57,27 @@ public class ConstructBinaryTreeFromPreorderAndInorderTraversal {
  */
 class Solution {
     public TreeNode buildTree(int[] preorder, int[] inorder) {
+
+        return build(inorder, 0, inorder.length, preorder, 0, preorder.length);
+    }
+
+    private TreeNode build(int[] inorder, int ileft, int iright,
+                           int[] preorder, int pleft, int pright) {
+
+        TreeNode root = new TreeNode(preorder[pleft]);
+
+        int i_root = 0;
+        for (int i = ileft; i < iright; i++) {
+            if (preorder[pleft] == inorder[i]) {
+                i_root = i;
+                break;
+            }
+        }
+        int leftNum = i_root - ileft;
+
+        root.left = build(preorder, pleft + 1 ,  pleft + leftNum + 1, inorder, 0, i_root - 1);
+        root.right = build(preorder, pleft + leftNum + 1 ,pright, inorder, i_root + 1, inorder.length);
+
         return null;
     }
 }
