@@ -35,52 +35,68 @@
 
 package leetcode.editor.cn;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ConstructBinaryTreeFromPreorderAndInorderTraversal {
     public static void main(String[] args) {
         Solution solution = new ConstructBinaryTreeFromPreorderAndInorderTraversal().new Solution();
     }
     //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
- */
-class Solution {
-    public TreeNode buildTree(int[] preorder, int[] inorder) {
 
-        return build(inorder, 0, inorder.length, preorder, 0, preorder.length);
-    }
+    /**
+     * Definition for a binary tree node.
+     * public class TreeNode {
+     * int val;
+     * TreeNode left;
+     * TreeNode right;
+     * TreeNode() {}
+     * TreeNode(int val) { this.val = val; }
+     * TreeNode(int val, TreeNode left, TreeNode right) {
+     * this.val = val;
+     * this.left = left;
+     * this.right = right;
+     * }
+     * }
+     */
+    class Solution {
 
-    private TreeNode build(int[] inorder, int ileft, int iright,
-                           int[] preorder, int pleft, int pright) {
+        private Map<Integer, Integer> indexMap;
 
-        TreeNode root = new TreeNode(preorder[pleft]);
-
-        int i_root = 0;
-        for (int i = ileft; i < iright; i++) {
-            if (preorder[pleft] == inorder[i]) {
-                i_root = i;
-                break;
+        public TreeNode buildTree(int[] preorder, int[] inorder) {
+            int n = preorder.length;
+            // 构造哈希映射，帮助我们快速定位根节点
+            indexMap = new HashMap<>();
+            for (int i = 0; i < n; i++) {
+                indexMap.put(inorder[i], i);
             }
+
+            return build(preorder, 0, preorder.length, inorder, 0, inorder.length);
         }
-        int leftNum = i_root - ileft;
 
-        root.left = build(preorder, pleft + 1 ,  pleft + leftNum + 1, inorder, 0, i_root - 1);
-        root.right = build(preorder, pleft + leftNum + 1 ,pright, inorder, i_root + 1, inorder.length);
+        private TreeNode build(int[] preorder, int pleft, int pright,
+                               int[] inorder, int ileft, int iright) {
 
-        return null;
+            if (pleft >= pright) {
+                return null;
+            }
+
+            TreeNode root = new TreeNode(preorder[pleft]);
+
+            // 在中序遍历中定位根节点
+            int i_root_index = indexMap.get(preorder[pleft]);
+            int leftNum = i_root_index - ileft;
+
+            root.left = build(preorder, pleft + 1, leftNum + pleft + 1,
+                    inorder, ileft, i_root_index - 1);
+            root.right = build(preorder, leftNum + pleft + 1, pright,
+                    inorder, i_root_index + 1, iright);
+
+            return root;
+        }
+
+
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
