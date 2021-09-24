@@ -22,35 +22,66 @@
 
 package leetcode.editor.cn;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ConstructBinaryTreeFromInorderAndPostorderTraversal {
     public static void main(String[] args) {
         Solution solution = new ConstructBinaryTreeFromInorderAndPostorderTraversal().new Solution();
     }
     //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
- */
-class Solution {
+
+    /**
+     * Definition for a binary tree node.
+     * public class TreeNode {
+     * int val;
+     * TreeNode left;
+     * TreeNode right;
+     * TreeNode() {}
+     * TreeNode(int val) { this.val = val; }
+     * TreeNode(int val, TreeNode left, TreeNode right) {
+     * this.val = val;
+     * this.left = left;
+     * this.right = right;
+     * }
+     * }
+     */
+    class Solution {
 
 
+        private Map<Integer, Integer> indexMap = new HashMap<>();
+
+        public TreeNode buildTree(int[] inorder, int[] postorder) {
+            for (int i = 0; i < inorder.length; i++) {
+                indexMap.put(inorder[i], i);
+            }
 
 
-    public TreeNode buildTree(int[] inorder, int[] postorder) {
-        return null;
+            return build(inorder, 0, inorder.length - 1,
+                    postorder, 0, postorder.length - 1);
+        }
+
+        private TreeNode build(int[] inorder, int istart, int iend,
+                               int[] postorder, int pstart, int pend) {
+            if (istart > iend || pstart > pend) {
+                return null;
+            }
+
+
+            int rootVal = postorder[pend];
+
+            Integer index = indexMap.get(rootVal);
+            TreeNode root = new TreeNode(postorder[pend]);
+
+
+            root.left = build(inorder, istart, index - 1,
+                    postorder, pstart, pend - iend + index - 1);
+            root.right = build(inorder, index + 1, iend,
+                    postorder, pend - iend + index, pend - 1);
+
+            return root;
+        }
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
