@@ -64,9 +64,6 @@ class Solution {
 
         return root;
     }
-
-    private void invert(TreeNode root) {
-    }
 }
 //leetcode submit region end(Prohibit modification and deletion)
 
