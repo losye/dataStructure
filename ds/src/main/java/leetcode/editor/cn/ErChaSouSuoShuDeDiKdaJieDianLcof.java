@@ -40,30 +40,42 @@ public class ErChaSouSuoShuDeDiKdaJieDianLcof {
         Solution solution = new ErChaSouSuoShuDeDiKdaJieDianLcof().new Solution();
     }
     //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
-class Solution {
-    int k;
-    int result;
 
-    public int kthLargest(TreeNode root, int k) {
-        this.k = k;
-        dfs(root);
-        return result;
+    /**
+     * Definition for a binary tree node.
+     * public class TreeNode {
+     * int val;
+     * TreeNode left;
+     * TreeNode right;
+     * TreeNode(int x) { val = x; }
+     * }
+     */
+    class Solution {
+        int k;
+        int result;
+
+        public int kthLargest(TreeNode root, int k) {
+            this.k = k;
+            dfs(root);
+            return result;
+        }
+
+        private void dfs(TreeNode root) {
+            if (root == null) {
+                return;
+            }
+
+            dfs(root.right);
+            if (k == 0) {
+                return;
+            }
+            --k;
+            if (k == 0) {
+                result = root.val;
+            }
+            dfs(root.left);
+        }
     }
-
-    private void dfs(TreeNode root) {
-
-
-    }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
