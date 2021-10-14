@@ -67,7 +67,6 @@ public class CountCompleteTreeNodes {
  */
 class Solution {
     public int countNodes(TreeNode root) {
-
         if (root == null) {
             return 0;
         }
@@ -82,8 +81,6 @@ class Solution {
             //最后一层不满，但倒数第二层已经满了
             return (1 << right)  + countNodes(root.left);
         }
-
-
 
         //return dfs(root);
     }
