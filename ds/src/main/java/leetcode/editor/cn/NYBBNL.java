@@ -39,6 +39,9 @@
 
 package leetcode.editor.cn;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class NYBBNL {
     public static void main(String[] args) {
         Solution solution = new NYBBNL().new Solution();
@@ -61,9 +64,28 @@ public class NYBBNL {
  */
 class Solution {
     public TreeNode increasingBST(TreeNode root) {
-        return null;
+        List<Integer> inorder = new ArrayList<>();
+        inorder(root, inorder);
 
+        TreeNode dummy = new TreeNode(-1);
+        TreeNode res = dummy;
 
+        for (Integer val : inorder) {
+            dummy.right = new TreeNode(val);
+            dummy = dummy.right;
+        }
+
+        return res.right;
+    }
+
+    private void inorder(TreeNode root, List<Integer> inorder) {
+        if (root == null) {
+            return;
+        }
+
+        inorder(root.left, inorder);
+        inorder.add(root.val);
+        inorder(root.right, inorder);
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
