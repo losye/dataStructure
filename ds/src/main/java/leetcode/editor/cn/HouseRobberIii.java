@@ -42,27 +42,31 @@ public class HouseRobberIii {
         Solution solution = new HouseRobberIii().new Solution();
     }
     //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
- */
-class Solution {
 
-    private HashMap<TreeNode, Integer> memo = new HashMap<>();
+    /**
+     * Definition for a binary tree node.
+     * public class TreeNode {
+     * int val;
+     * TreeNode left;
+     * TreeNode right;
+     * TreeNode() {}
+     * TreeNode(int val) { this.val = val; }
+     * TreeNode(int val, TreeNode left, TreeNode right) {
+     * this.val = val;
+     * this.left = left;
+     * this.right = right;
+     * }
+     * }
+     */
+    class Solution {
 
-    public int rob(TreeNode root) {
-        if (root == null) {
+        private HashMap<TreeNode, Integer> memo = new HashMap<>();
+
+        public int rob(TreeNode root) {
+            int[] result = recur(root);
+            return Math.max(result[0], result[1]);
+
+        /*if (root == null) {
             return 0;
         }
         if (memo.containsKey(root)) {
@@ -80,9 +84,24 @@ class Solution {
         int max = Math.max(val, rob(root.left) + rob(root.right));
         memo.put(root, max);
 
-        return max;
+        return max;*/
+        }
+
+        private int[] recur(TreeNode root) {
+            // 0 代表不偷，1 代表偷
+            int[] result = new int[2];
+            if (root == null) {
+                return result;
+            }
+            int[] left = recur(root.left);
+            int[] right = recur(root.right);
+
+            result[0] = Math.max(left[0], left[1]) + Math.max(right[0], right[1]);
+            result[1] = root.val + left[0] + right[0];
+
+            return result;
+        }
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
