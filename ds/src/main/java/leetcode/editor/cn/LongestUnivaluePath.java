@@ -66,26 +66,34 @@ public class LongestUnivaluePath {
  * }
  */
 class Solution {
-    int max = -1;
+    int max = 0;
 
     public int longestUnivaluePath(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
-
-        int left = longestUnivaluePath(root.left);
-        int right = longestUnivaluePath(root.right);
-
-        root.val ==
-
+       dfs(root);
+       return max;
     }
 
-    private int dfs(TreeNode root, int path) {
+    private int dfs(TreeNode root) {
         if (root == null) {
             return 0;
         }
-        if () {
+
+        int left = dfs(root.left);
+        int right = dfs(root.right);
+        int leftCnt = 0;
+        int rightCnt = 0;
+
+        if (root.left != null && root.left.val == root.val) {
+            leftCnt = left + 1;
         }
+
+        if (root.right != null && root.right.val == root.val) {
+            rightCnt = right + 1;
+        }
+
+        max = Math.max(max, leftCnt + rightCnt);
+
+        return Math.max(leftCnt, rightCnt);
 
     }
 }

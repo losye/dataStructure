@@ -30,6 +30,8 @@
 
 package leetcode.editor.cn;
 
+import java.util.LinkedList;
+
 public class IncreasingOrderSearchTree {
     public static void main(String[] args) {
         Solution solution = new IncreasingOrderSearchTree().new Solution();
@@ -51,8 +53,32 @@ public class IncreasingOrderSearchTree {
  * }
  */
 class Solution {
+
+    LinkedList<Integer> list = new LinkedList<>();
+
     public TreeNode increasingBST(TreeNode root) {
-        return null;
+        if (root == null) {
+            return null;
+        }
+        inorder(root);
+        Integer val = list.removeLast();
+        TreeNode res = new TreeNode(val);
+        TreeNode tmp = res;
+        while (list.size() > 0) {
+            tmp.right = new TreeNode(list.removeLast());
+            tmp = tmp.right;
+        }
+        return res;
+    }
+
+    private void inorder(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        inorder(root.left);
+        list.addFirst(root.val);
+        inorder(root.right);
+
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
