@@ -84,6 +84,32 @@ public class LowestCommonAncestorOfDeepestLeaves {
 
         public TreeNode lcaDeepestLeaves(TreeNode root) {
 
+            dfs(root, 0);
+
+            return result;
+        }
+
+
+        /**
+         * @param node  节点
+         * @param depth 深度
+         * @return 返回以node为根节点的最大深度
+         */
+        private int dfs(TreeNode node, int depth) {
+            if (node == null) {
+                return depth;
+            }
+
+            int left = dfs(node.left, depth + 1);
+            int right = dfs(node.right, depth + 1);
+            int curMax = Math.max(left, right);
+            maxLevel = Math.max(maxLevel, curMax);
+
+            if (maxLevel == left && right == maxLevel) {
+                result = node;
+            }
+            return curMax;
+
         }
 
 
