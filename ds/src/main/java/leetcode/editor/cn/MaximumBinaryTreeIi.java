@@ -87,7 +87,13 @@ public class MaximumBinaryTreeIi {
  */
 class Solution {
     public TreeNode insertIntoMaxTree(TreeNode root, int val) {
-        return null;
+        if(root == null || root.val < val) {
+            TreeNode tmp = new TreeNode(val);
+            tmp.left = root;
+            return tmp;
+        }
+        root.right = insertIntoMaxTree(root.right, val);
+        return root;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
