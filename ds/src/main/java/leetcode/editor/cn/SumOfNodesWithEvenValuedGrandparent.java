@@ -74,7 +74,6 @@ class Solution {
             addVal(right);
         }
 
-
         dfs(left);
         dfs(right);
     }
