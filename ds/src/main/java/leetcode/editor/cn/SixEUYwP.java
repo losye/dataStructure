@@ -30,15 +30,19 @@
 // -109 <= Node.val <= 109
 // -1000 <= targetSum <= 1000
 //
+//
+//
+//
+// 注意：本题与主站 437 题相同：https://leetcode-cn.com/problems/path-sum-iii/
 // Related Topics 树 深度优先搜索 二叉树
-// 👍 1135 👎 0
+// 👍 14 👎 0
 
 
 package leetcode.editor.cn;
 
-public class PathSumIii {
+public class SixEUYwP {
     public static void main(String[] args) {
-        Solution solution = new PathSumIii().new Solution();
+        Solution solution = new SixEUYwP().new Solution();
     }
     //leetcode submit region begin(Prohibit modification and deletion)
 /**
@@ -58,32 +62,36 @@ public class PathSumIii {
  */
 class Solution {
 
+    private int res = 0;
 
     public int pathSum(TreeNode root, int targetSum) {
         // TODO: 2022-01-21 前缀和解法更优
-        int cnt = 0;
         if (root == null) {
-            return cnt;
+            return res;
         }
-        cnt += dfs(root, targetSum);
-        cnt += pathSum(root.left, targetSum);
-        cnt += pathSum(root.right, targetSum);
+        dfs(root, targetSum);
 
-        return cnt;
+        pathSum(root.left, targetSum);
+        pathSum(root.right, targetSum);
+
+        return res;
     }
 
-    private int dfs(TreeNode root, int targetSum) {
-        int cnt = 0;
+    private void dfs(TreeNode root, int targetSum) {
         if (root == null) {
-            return cnt;
+            return ;
         }
-        int val = root.val;
-        if (targetSum  == val) {
-            cnt++;
+       /* if (targetSum < 0) {
+            return;
+        }*/
+
+
+        dfs(root.left, targetSum - root.val);
+        dfs(root.right, targetSum - root.val);
+
+        if (targetSum - root.val == 0) {
+            res++;
         }
-        cnt += dfs(root.left, targetSum - val);
-        cnt += dfs(root.right, targetSum - val);
-        return cnt;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
