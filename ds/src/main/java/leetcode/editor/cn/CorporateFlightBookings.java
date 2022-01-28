@@ -63,7 +63,7 @@ class Solution {
         Difference df = new Difference(nums);
 
         for (int[] booking : bookings) {
-            // 注意转成数组索引要减一哦
+            // 注意转成数组索引要减一
             int i = booking[0] - 1;
             int j = booking[1] - 1;
             int val = booking[2];
