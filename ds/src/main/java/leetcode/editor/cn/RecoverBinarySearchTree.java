@@ -77,7 +77,7 @@ class Solution {
 
         dfs(root.left);
         //  3  2  1
-        //  1  3  2  4
+        //  1  4  3  2  5  6
         if (root.val < prev.val) {
             if (first == null) {
                 first = prev;

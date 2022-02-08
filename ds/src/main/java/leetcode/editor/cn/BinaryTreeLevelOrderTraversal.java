@@ -29,6 +29,7 @@
 package leetcode.editor.cn;
 
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -62,6 +63,33 @@ class Solution {
         order(root, 0);
 
         return result;
+    }
+
+    private void itor(TreeNode root){
+
+        if (root == null) {
+            return;
+        }
+        Deque<TreeNode> deque = new LinkedList<>();
+        deque.addLast(root);
+
+        while (!deque.isEmpty()) {
+            int size = deque.size();
+            List<Integer> levelList = new ArrayList<>(size);
+            for (int i = 0; i < size; i++) {
+                TreeNode treeNode = deque.pollFirst();
+                levelList.add(treeNode.val);
+
+                if (treeNode.left != null) {
+                    deque.addLast(treeNode.left);
+                }
+                if (treeNode.right != null) {
+                    deque.addLast(treeNode.right);
+                }
+            }
+            result.add(levelList);
+        }
+
     }
 
     private void order(TreeNode root, int level) {

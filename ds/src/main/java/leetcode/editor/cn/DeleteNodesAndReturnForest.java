@@ -67,6 +67,11 @@ class Solution {
 
     private boolean[] isDeleted = new boolean[1001];
 
+
+    //       4
+    //    2     1
+    //  5  3  9
+    //
     public List<TreeNode> delNodes(TreeNode root, int[] to_delete) {
 
         for (int delete : to_delete) {

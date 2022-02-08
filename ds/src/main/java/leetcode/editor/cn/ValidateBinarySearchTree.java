@@ -61,7 +61,10 @@ public class ValidateBinarySearchTree {
  */
 class Solution {
 
-
+    //           6
+    //       4      9
+    //    2   5   7   10
+    //
 
     public boolean isValidBST(TreeNode root) {
 
