@@ -68,7 +68,7 @@ import java.util.LinkedList;
 
 public class BinarySearchTreeIterator {
     public static void main(String[] args) {
-        Solution solution = new BinarySearchTreeIterator().new Solution();
+        BSTIterator solution = new BinarySearchTreeIterator().new BSTIterator(null);
     }
 
 
@@ -89,41 +89,44 @@ public class BinarySearchTreeIterator {
      * }
      * }
      */
-    class Solution {
-        class BSTIterator {
+    class BSTIterator {
 
-            private TreeNode root;
-            private Deque<TreeNode> stack;
+        private Deque<TreeNode> stack = new LinkedList<>();
 
-            public BSTIterator(TreeNode root) {
-                this.root = root;
-                stack = new LinkedList<>();
+        public BSTIterator(TreeNode root) {
+            pushLeft(root);
+        }
+
+        private void pushLeft(TreeNode root) {
+            while (root != null) {
+                stack.push(root);
+                root = root.left;
             }
+        }
 
-            public int next() {
-                while (root != null) {
-                    stack.push(root);
-                    root = root.left;
-                }
-                root = stack.pop();
-                int ret = root.val;
-                root = root.right;
-                return ret;
-            }
+        //      a
+        //   b      c
+        // d   e  f
+        public int next() {
+            TreeNode node = stack.pop();
+            pushLeft(node.right);
+            return node.val;
+        }
 
-            public boolean hasNext() {
-                return !stack.isEmpty();
-            }
+        public boolean hasNext() {
+            return  !stack.isEmpty();
         }
     }
 
-
-/**
- * Your BSTIterator object will be instantiated and called as such:
- * BSTIterator obj = new BSTIterator(root);
- * int param_1 = obj.next();
- * boolean param_2 = obj.hasNext();
- */
+    /**
+     * Your BSTIterator object will be instantiated and called as such:
+     * BSTIterator obj = new BSTIterator(root);
+     * int param_1 = obj.next();
+     * boolean param_2 = obj.hasNext();
+     */
 //leetcode submit region end(Prohibit modification and deletion)
-
 }
+
+
+
+
