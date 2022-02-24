@@ -44,21 +44,45 @@
 
 package leetcode.editor.cn;
 
+import java.util.PriorityQueue;
+
 public class KthLargestElementInAStream {
     public static void main(String[] args) {
-       // KthLargest solution = new KthLargestElementInAStream().new KthLargest();
+        //KthLargest solution = new KthLargestElementInAStream().new KthLargest();
     }
+
     //leetcode submit region begin(Prohibit modification and deletion)
-class KthLargest {
+    class KthLargest {
 
-    public KthLargest(int k, int[] nums) {
+        private int k;
 
+        //小顶堆
+        private PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+
+
+        public KthLargest(int k, int[] nums) {
+            this.k = k;
+
+            for (int num : nums) {
+                minHeap.offer(num);
+
+                if (minHeap.size() > k) {
+                    minHeap.poll();
+                }
+            }
+
+        }
+
+        public int add(int val) {
+            minHeap.offer(val);
+
+            if (minHeap.size() > k) {
+                minHeap.poll();
+            }
+
+            return minHeap.peek();
+        }
     }
-
-    public int add(int val) {
-        return 0;
-    }
-}
 
 /**
  * Your KthLargest object will be instantiated and called as such:
