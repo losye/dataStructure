@@ -70,7 +70,6 @@ public class KthLargestElementInAStream {
                     minHeap.poll();
                 }
             }
-
         }
 
         public int add(int val) {
