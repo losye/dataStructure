@@ -65,7 +65,8 @@ public class NumberOfEnclaves {
             for (int i = 1; i < row; i++) {
                 for (int j = 1; j < col; j++) {
                     if (grid[i][j] == 1) {
-                        res += dfs(grid, i, j);
+                        //res += dfs(grid, i, j);
+                        res += 1;
                     }
                 }
             }
