@@ -62,7 +62,9 @@ class Solution {
         if (s == null || s.equals("")) {
             return "";
         }
-
+        // 两个hash表可以用数组替代
+        // int[] need = new int[128];
+        // int[] have = window int[128];
         Map<Character, Integer> need = new HashMap<>();
         for (char c : t.toCharArray()) {
             need.put(c, need.getOrDefault(c, 0) + 1);
