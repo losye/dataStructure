@@ -64,9 +64,10 @@
 package leetcode.editor.cn;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.PriorityQueue;
 
 public class MinCostToConnectAllPoints {
     public static void main(String[] args) {
@@ -76,8 +77,79 @@ public class MinCostToConnectAllPoints {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int minCostConnectPoints(int[][] points) {
+            List<int[]>[] graph = buildGraph(points);
+            Prim prim = new Prim(graph);
 
-            return kruskal(points);
+            return prim.getWeightSum();
+            //return kruskal(points);
+        }
+
+        private List<int[]>[] buildGraph(int[][] points) {
+            int n = points.length;
+            List<int[]>[] graph = new LinkedList[n];
+            for (int i = 0; i < n; i++) {
+                graph[i] = new LinkedList<>();
+            }
+
+            for (int i = 0; i < n; i++) {
+                for (int j = i + 1; j < n; j++) {
+                    int xi = points[i][0], yi = points[i][1];
+                    int xj = points[j][0], yj = points[j][1];
+                    int weight = Math.abs(xi - xj) + Math.abs(yi - yj);
+
+                    graph[i].add(new int[]{i, j, weight});
+                    graph[j].add(new int[]{j, i, weight});
+                }
+            }
+            return graph;
+        }
+
+        class Prim {
+            private List<int[]>[] graph;
+
+            private boolean[] inMst;
+
+            private int weightSum = 0;
+
+            private PriorityQueue<int[]> priorityQueue = new PriorityQueue<>(Comparator.comparingInt(a -> a[2]));
+
+            public Prim(List<int[]>[] graph){
+                this.graph = graph;
+                inMst = new boolean[graph.length];
+
+                inMst[0] = true;
+                cut(0);
+
+                while (!priorityQueue.isEmpty()) {
+                    int[] node = priorityQueue.poll();
+                    int to = node[1];
+                    if (inMst[to]) {
+                        continue;
+                    }
+                    inMst[to] = true;
+
+                    int weight = node[2];
+                    weightSum += weight;
+
+                    cut(to);
+                }
+            }
+
+            private void cut(int i) {
+                List<int[]> edgs = graph[i];
+
+                for (int[] edg : edgs) {
+                    int to = edg[1];
+                    if (inMst[to]) {
+                        continue;
+                    }
+                    priorityQueue.offer(edg);
+                }
+            }
+
+            public int getWeightSum(){
+                return weightSum;
+            }
         }
 
         private int kruskal(int[][] points) {
@@ -107,7 +179,6 @@ public class MinCostToConnectAllPoints {
             }
             return res;
         }
-
 
         class UnionFind {
             private int cnt;
