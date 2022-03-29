@@ -77,16 +77,17 @@ public class MinCostToConnectAllPoints {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int minCostConnectPoints(int[][] points) {
-            List<int[]>[] graph = buildGraph(points);
+
+            List<Edge>[] graph = buildGraph(points);
             Prim prim = new Prim(graph);
 
             return prim.getWeightSum();
             //return kruskal(points);
         }
 
-        private List<int[]>[] buildGraph(int[][] points) {
+        public List<Edge>[] buildGraph(int[][] points) {
             int n = points.length;
-            List<int[]>[] graph = new LinkedList[n];
+            List<Edge>[] graph = new LinkedList[n];
             for (int i = 0; i < n; i++) {
                 graph[i] = new LinkedList<>();
             }
@@ -97,60 +98,92 @@ public class MinCostToConnectAllPoints {
                     int xj = points[j][0], yj = points[j][1];
                     int weight = Math.abs(xi - xj) + Math.abs(yi - yj);
 
-                    graph[i].add(new int[]{i, j, weight});
-                    graph[j].add(new int[]{j, i, weight});
+                    graph[i].add(new Edge(i, j, weight));
+                    graph[j].add(new Edge(j, i, weight));
                 }
             }
             return graph;
         }
 
         class Prim {
-            private List<int[]>[] graph;
 
-            private boolean[] inMst;
+            private List<Edge>[] graph;
 
-            private int weightSum = 0;
+            private PriorityQueue<Edge> priorityQueue = new PriorityQueue<>((Edge::compareTo));
 
-            private PriorityQueue<int[]> priorityQueue = new PriorityQueue<>(Comparator.comparingInt(a -> a[2]));
+            private int weightSum;
 
-            public Prim(List<int[]>[] graph){
+            private boolean[] inMST;
+
+            public Prim(List<Edge>[] graph) {
                 this.graph = graph;
-                inMst = new boolean[graph.length];
+                inMST = new boolean[graph.length];
 
-                inMst[0] = true;
+                inMST[0] = true;
                 cut(0);
 
                 while (!priorityQueue.isEmpty()) {
-                    int[] node = priorityQueue.poll();
-                    int to = node[1];
-                    if (inMst[to]) {
+                    Edge edge = priorityQueue.poll();
+
+                    int to = edge.to;
+                    if (inMST[to]) {
                         continue;
                     }
-                    inMst[to] = true;
-
-                    int weight = node[2];
-                    weightSum += weight;
+                    inMST[to] = true;
 
                     cut(to);
+                    weightSum += edge.weight;
                 }
+
             }
 
-            private void cut(int i) {
-                List<int[]> edgs = graph[i];
 
-                for (int[] edg : edgs) {
-                    int to = edg[1];
-                    if (inMst[to]) {
+            private void cut(int node) {
+                List<Edge> edges = graph[node];
+
+                for (Edge edge : edges) {
+                    int to = edge.to;
+                    if (inMST[to]) {
                         continue;
                     }
-                    priorityQueue.offer(edg);
+                    priorityQueue.offer(edge);
                 }
             }
 
-            public int getWeightSum(){
+            public int getWeightSum() {
                 return weightSum;
             }
+
+            public boolean allConnected() {
+                for (boolean in : inMST) {
+                    if (!in) {
+                        return false;
+                    }
+                }
+                return true;
+            }
         }
+
+        class Edge implements Comparable<Edge> {
+
+            int from;
+
+            int to;
+
+            Integer weight;
+
+            public Edge(int from, int to, Integer weight) {
+                this.from = from;
+                this.to = to;
+                this.weight = weight;
+            }
+
+            @Override
+            public int compareTo(Edge o) {
+                return this.weight.compareTo(o.weight);
+            }
+        }
+
 
         private int kruskal(int[][] points) {
             List<int[]> edges = new ArrayList<>();
@@ -234,6 +267,74 @@ public class MinCostToConnectAllPoints {
                 cnt--;
             }
         }
+
+        /*class Prim {
+            private List<int[]>[] graph;
+
+            private boolean[] inMst;
+
+            private int weightSum = 0;
+
+            private PriorityQueue<int[]> priorityQueue = new PriorityQueue<>(Comparator.comparingInt(a -> a[2]));
+
+            public Prim(List<int[]>[] graph) {
+                this.graph = graph;
+                inMst = new boolean[graph.length];
+
+                inMst[0] = true;
+                cut(0);
+
+                while (!priorityQueue.isEmpty()) {
+                    int[] node = priorityQueue.poll();
+                    int to = node[1];
+                    if (inMst[to]) {
+                        continue;
+                    }
+                    inMst[to] = true;
+
+                    int weight = node[2];
+                    weightSum += weight;
+
+                    cut(to);
+                }
+            }
+
+            private void cut(int i) {
+                List<int[]> edgs = graph[i];
+
+                for (int[] edg : edgs) {
+                    int to = edg[1];
+                    if (inMst[to]) {
+                        continue;
+                    }
+                    priorityQueue.offer(edg);
+                }
+            }
+
+            public int getWeightSum() {
+                return weightSum;
+            }
+        }
+
+        private List<int[]>[] buildGraph(int[][] points) {
+            int n = points.length;
+            List<int[]>[] graph = new LinkedList[n];
+            for (int i = 0; i < n; i++) {
+                graph[i] = new LinkedList<>();
+            }
+
+            for (int i = 0; i < n; i++) {
+                for (int j = i + 1; j < n; j++) {
+                    int xi = points[i][0], yi = points[i][1];
+                    int xj = points[j][0], yj = points[j][1];
+                    int weight = Math.abs(xi - xj) + Math.abs(yi - yj);
+
+                    graph[i].add(new int[]{i, j, weight});
+                    graph[j].add(new int[]{j, i, weight});
+                }
+            }
+            return graph;
+        }*/
     }
 //leetcode submit region end(Prohibit modification and deletion)
 
