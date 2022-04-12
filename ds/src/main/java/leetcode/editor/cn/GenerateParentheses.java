@@ -60,7 +60,6 @@ public class GenerateParentheses {
             if (l < 0) {
                 return;
             }
-
             if (l == 0 && r == 0) {
                 res.add(path.toString());
                 return;
@@ -73,8 +72,6 @@ public class GenerateParentheses {
             path.append(")");
             backTrack(path, l, r - 1);
             path.deleteCharAt(path.length() - 1);
-
-
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
