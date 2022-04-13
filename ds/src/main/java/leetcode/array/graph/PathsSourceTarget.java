@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author modong
+ * @author ye
  * @date 2018/9/4 下午11:22
  *
  * Given a directed, acyclic graph of N nodes.  Find all possible paths from node 0 to node N-1,

@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * @author modong
+ * @author ye
  * @date 2018/8/17 下午7:57
  *
  * International Morse Code defines a standard encoding where
@@ -75,5 +75,5 @@ public class MorseCode {
     @Test
     public void test(){
         Assert.assertEquals(2 ,MorseCode.uniqueMorseRepresentations(new String[]{"gin", "zen", "gig", "msg"}));
-    } 
+    }
 }

@@ -1,7 +1,7 @@
 package leetcode.editor.cn.struct;
 
 /**
- * @author modong
+ * @author ye
  * @date 2022-01-19 09:32
  */
 public class Node {

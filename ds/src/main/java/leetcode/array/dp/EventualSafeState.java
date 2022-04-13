@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * @author modong
+ * @author ye
  * @date 2018/8/23 下午11:28
  * In a directed graph, we start at some node and every turn,
  *

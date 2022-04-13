@@ -1,7 +1,7 @@
 package leetcode.editor.cn;
 
 /**
- * @author modong
+ * @author ye
  * @date 2021-09-07 08:54
  */
 public class ListNode {
