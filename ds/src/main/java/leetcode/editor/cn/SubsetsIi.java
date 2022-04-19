@@ -64,6 +64,7 @@ public class SubsetsIi {
             return res;
         }
 
+        // 1 2 2
         private void backtrack(int[] nums, int index) {
             res.add(new ArrayList<>(path));
             //             [ ]
