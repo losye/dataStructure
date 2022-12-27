@@ -6,8 +6,8 @@ class Solution {
         HashMap<Character, Integer> need = new HashMap<>();
         HashMap<Character, Integer> window = new HashMap<>();
         for (char c : t.toCharArray()) {
-            Integer val = need.getOrDefault(c, 0);
-            need.put(c, val + 1);
+            Integer cnt = need.getOrDefault(c, 0);
+            need.put(c, cnt + 1);
         }
         char[] chars = s.toCharArray();
         int left = 0; int right = 0; int valid = 0;
@@ -18,7 +18,7 @@ class Solution {
             if (need.containsKey(rv)) {
                 int rc = window.getOrDefault(rv, 0);
                 window.put(rv, rc + 1);
-                if (rc + 1 == need.get(rv)) {
+                if (need.get(rv) == rc + 1) {
                     valid++;
                 }
             }
@@ -33,7 +33,7 @@ class Solution {
                 if (need.containsKey(lv)) {
                     int lc = window.get(lv);
                     window.put(lv, lc - 1);
-                    if (lc == need.get(lv)) {
+                    if (need.get(lv) == lc) {
                         valid--;
                     }
                 }

@@ -53,7 +53,7 @@
 
 <div id="labuladong"><hr>
 
-**通知：[数据结构精品课](https://aep.h5.xeknow.com/s/1XJHEO) 已更新到 V2.0，2022 年最后一期打卡训练营 [开始报名](https://aep.xet.tech/s/3ts7sQ)。**
+**通知：[数据结构精品课](https://aep.h5.xeknow.com/s/1XJHEO) 已更新到 V2.1。过年前最后一期打卡挑战 [开始报名](https://aep.xet.tech/s/1a9ByX)。**
 
 
 
